@@ -1,32 +1,25 @@
 package mydb.datastructure;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import netscape.javascript.JSObject;
 
-import java.io.Serializable;
-import java.util.LinkedList;
 import java.util.List;
 
-public class TableData implements Serializable {
-    private List<JsonNode> data;
+public class TableData {
+    private List<JSObject> data;
 
-    public TableData(){
-        this.data = new LinkedList<>();
-    }
-
-    public TableData(List<JsonNode> data) {
+    public TableData(List<JSObject> data) {
         this.data = data;
     }
 
-    public List<JsonNode> getData() {
+    public List<JSObject> getData() {
         return data;
     }
 
-    public void setData(List<JsonNode> data) {
+    public void setData(List<JSObject> data) {
         this.data = data;
     }
 
-    public void addRow(JsonNode row)
+    public void addRow(JSObject row)
     {
         this.data.add(row);
     }

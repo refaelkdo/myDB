@@ -1,36 +1,30 @@
 package mydb.file.io;
 
-import mydb.datastructure.TableData;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.*;
 
 public class FileWriter extends FileIO{
-    private FileOutputStream fileOutputStream;
-    ObjectOutputStream objectOutputStream;
+    private Writer writer;
 
     public FileWriter(String file) throws IOException {
         super(file);
-        this.fileOutputStream = new FileOutputStream(new File(file));
-        this.objectOutputStream = new ObjectOutputStream(this.fileOutputStream);
+        this.writer = new java.io.FileWriter(new File(file)) {
+        };
     }
 
-    public FileOutputStream getFileOutputStream() {
-        return fileOutputStream;
+    public Writer getWriter() {
+        return writer;
     }
 
-    public void setFileOutputStream(FileOutputStream fileOutputStream) {
-        this.fileOutputStream = fileOutputStream;
+    public void setWriter(Writer writer) {
+        this.writer = writer;
     }
 
-    public ObjectOutputStream getObjectOutputStream() {
-        return objectOutputStream;
-    }
-
-    public void setObjectOutputStream(ObjectOutputStream objectOutputStream) {
-        this.objectOutputStream = objectOutputStream;
-    }
-
-    public void writeTable(TableData table) throws IOException {
-        this.objectOutputStream.writeObject(table);
+    public void writeRow(JsonNode row) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        this.writer.write(objectMapper.writeValueAsString(row));
+        this.writer.flush();
     }
 }
