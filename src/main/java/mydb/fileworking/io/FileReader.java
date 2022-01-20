@@ -1,4 +1,4 @@
-package mydb.file.io;
+package mydb.fileworking.io;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,9 +18,25 @@ public class FileReader extends FileIO{
         this.objectMapper = new ObjectMapper();
     }
 
+    public FileInputStream getFileInputStream() {
+        return fileInputStream;
+    }
+
+    public void setFileInputStream(FileInputStream fileInputStream) {
+        this.fileInputStream = fileInputStream;
+    }
+
+    public ObjectMapper getObjectMapper() {
+        return objectMapper;
+    }
+
+    public void setObjectMapper(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
+
     /*
-     im doing this for only one record because i will work with threads so i will take at a time for better runtime
-     */
+    im doing this for only one record because i will work with threads so i will take at a time for better runtime
+    */
     public JsonNode GetRecord(int lineNumber)
     {
         try (Stream<String> lines = Files.lines(Paths.get(this.file))) {

@@ -1,4 +1,4 @@
-package mydb.file.io;
+package mydb.fileworking.io;
 
 public abstract class FileIO {
     protected String file;
