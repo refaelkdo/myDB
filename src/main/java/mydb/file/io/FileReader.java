@@ -18,6 +18,9 @@ public class FileReader extends FileIO{
         this.objectMapper = new ObjectMapper();
     }
 
+    /*
+     im doing this for only one record because i will work with threads so i will take at a time for better runtime
+     */
     public JsonNode GetRecord(int lineNumber)
     {
         try (Stream<String> lines = Files.lines(Paths.get(this.file))) {

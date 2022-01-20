@@ -25,6 +25,7 @@ public class FileWriter extends FileIO{
     public void writeRow(JsonNode row) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         this.writer.write(objectMapper.writeValueAsString(row));
+        this.writer.write("\n");
         this.writer.flush();
     }
 }

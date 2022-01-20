@@ -19,5 +19,7 @@ public class Main {
         fileWriter.writeRow(mapper.readTree(jsonString1));
         fileWriter.writeRow(mapper.readTree(jsonString2));
         fileWriter.writeRow(mapper.readTree(jsonString3));
+        FileReader fileReader = new FileReader("C:\\Users\\REFAEL\\Desktop\\STDb\\db.txt");
+        System.out.println(fileReader.GetRecord(2));
     }
 }
